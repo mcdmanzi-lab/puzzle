@@ -44,16 +44,25 @@ A modern sliding puzzle game built with Vue.js frontend and Node.js/Express back
    npm install
    ```
 
-3. Create a `.env` file in the server directory:
+3. Create a `.env` file in the server directory using `.env.example` as a template:
+   ```bash
+   cp .env.example .env
    ```
-   MONGODB_URI=mongodb://localhost:27017/puzzle_game
-   JWT_SECRET=your_super_secret_jwt_key_here
+
+4. Configure your environment variables in `.env`:
+   ```
+   # MongoDB Atlas Connection String
+   MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/puzzle_game?retryWrites=true&w=majority
+   
+   # Generate a secure JWT secret (use: openssl rand -base64 32)
+   JWT_SECRET=your_generated_secret_key_here
+   
    PORT=5000
    ```
 
-4. Start MongoDB service (if using local MongoDB)
+5. Start MongoDB service (if using local MongoDB) or ensure MongoDB Atlas is accessible
 
-5. Start the backend server:
+6. Start the backend server:
    ```bash
    npm start
    ```
@@ -63,6 +72,14 @@ A modern sliding puzzle game built with Vue.js frontend and Node.js/Express back
    ```
 
 The backend will run on http://localhost:5000
+
+### Environment Variables
+
+- `MONGODB_URI`: MongoDB connection string (local or MongoDB Atlas)
+- `JWT_SECRET`: Secret key for JWT token signing (keep this secure!)
+- `PORT`: Server port (default: 5000)
+
+**Security Note**: Never commit `.env` files to version control. Use `.env.example` as a template and document required variables.
 
 ### Frontend Setup
 
